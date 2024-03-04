@@ -17,9 +17,9 @@
 
 using EF;
 
-//using var db = new DB();
+using var db = new DB();
 
-DB db = new();
+//DB db = new();
 
 //// Note: This sample requires the database to be created before running.
 //Console.WriteLine($"Database path: {db.DbPath}.");

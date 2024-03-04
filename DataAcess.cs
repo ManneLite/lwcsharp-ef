@@ -1,7 +1,6 @@
-﻿using EF.Models;
+﻿namespace EF;
+//using EF.Models;
 using Microsoft.EntityFrameworkCore;
-
-namespace EF;
 
 class DB : DbContext
 {
@@ -10,21 +9,21 @@ class DB : DbContext
     public DbSet<Category> Categories { get; set; }
     public DbSet<Blog> Blogs { get; set; }
 
-    string _path = "blogging.db";
+    //string _path = "blogging.db";
 
-    protected override void OnConfiguring(DbContextOptionsBuilder options) =>
-        options.UseSqlite($"Data Source={_path}");
+    //protected override void OnConfiguring(DbContextOptionsBuilder options) =>
+    //    options.UseSqlite($"Data Source={_path}");
 
-    //public string DbPath { get; }
-    //public DB()
-    //{
-    //    var folder = Environment.SpecialFolder.LocalApplicationData;
-    //    var path = Environment.GetFolderPath(folder);
-    //    DbPath = Path.Join(path, "blogging.db");
-    //}
+    public string DbPath { get; }
+    public DB()
+    {
+        var folder = Environment.SpecialFolder.LocalApplicationData;
+        var path = Environment.GetFolderPath(folder);
+        DbPath = Path.Join(path, "blogging.db");
+    }
 
-    //protected override void OnConfiguring(DbContextOptionsBuilder options)
-    //        => options.UseSqlite($"Data Source={DbPath}");
+    protected override void OnConfiguring(DbContextOptionsBuilder options)
+            => options.UseSqlite($"Data Source={DbPath}");
     //        options.UseSqlite($"{DbPath}",
     //        optionsSqlite => { optionsSqlite.MigrationsAssembly("$(MSBuildEF)"); });
 
@@ -41,4 +40,44 @@ class DB : DbContext
     //    });
 
     //}
+}
+public class User
+{
+    public int UserId { get; set; }
+    public string? Name { get; set; }
+
+    public List<Post> Posts { get; } = new();
+}
+
+public class Blog
+{
+    public int BlogId { get; set; }
+    public string Url { get; set; }
+
+    public int UserId { get; set; }
+    public User User { get; set; }
+
+    public List<Post> Posts { get; } = new();
+}
+
+public class Post
+{
+    public int PostId { get; set; }
+    public string Title { get; set; }
+
+    public int BlogId { get; set; }
+    public Blog Blog { get; set; }
+
+    public int UserId { get; set; }
+    public User User { get; set; }
+
+    public List<Category> Categories { get; } = new();
+}
+
+public class Category
+{
+    public int CategoryId { get; set; }
+    public string? Name { get; set; }
+
+    public List<Post> Posts { get; } = new();
 }
