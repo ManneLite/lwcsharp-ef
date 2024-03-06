@@ -1,4 +1,4 @@
-﻿//namespace EF.Models;
+﻿//namespace EFAssignment.Models;
 //public class Post
 //{
 //    public int PostId { get; set; }

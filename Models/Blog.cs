@@ -1,4 +1,4 @@
-﻿//namespace EF.Models;
+﻿//namespace EFAssignment.Models;
 //public class Blog
 //{
 //    public int BlogId { get; set; }

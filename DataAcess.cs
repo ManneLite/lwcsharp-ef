@@ -1,4 +1,4 @@
-﻿namespace EF;
+﻿namespace EFAssignment;
 //using EF.Models;
 using Microsoft.EntityFrameworkCore;
 

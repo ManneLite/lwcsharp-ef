@@ -15,7 +15,7 @@
 //Post Post = db.Users.Where(u => u.Name ==
 //"A").First().Posts.Where(a => a.Title == "Taiyaki").First();
 
-using EF;
+using EFAssignment;
 
 using var db = new DB();
 
